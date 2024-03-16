@@ -9,10 +9,10 @@ fn main() {
     println!("test_list2 {:?}", test_list2);
     println!("test_list3 {:?}", test_list3);
     
-    algo::sorting::selection_sort(&mut test_list1);
-    algo::sorting::selection_sort(&mut test_list2);
-    algo::sorting::selection_sort(&mut test_list3);
-    
+    algo::sorting::insertion_sort(&mut test_list1);
+    algo::sorting::insertion_sort(&mut test_list2);
+    algo::sorting::insertion_sort(&mut test_list3);
+
     println!("test_list1 {:?}", test_list1);
     println!("test_list2 {:?}", test_list2);
     println!("test_list3 {:?}", test_list3);

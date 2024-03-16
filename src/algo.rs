@@ -65,7 +65,6 @@ pub mod sorting{
     }
 
     pub fn selection_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
-        let mut n_sorted = 0;
         let mut n = list.len();
         let mut max;
         for i in 0..(list.len() - 1){
@@ -73,6 +72,30 @@ pub mod sorting{
             let t = list[max];
             list[max] = list[n - i - 1];
             list[n - i - 1] = t;
+        }
+    }
+
+    pub fn insertion_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
+        if list[0] > list[1] {
+            let t = list[0];
+            list[0] = list[1];
+            list[1] = t;
+        }
+        for i in 1..(list.len() - 1){
+            if list[i] > list[i + 1] {
+
+                let t = list[i];
+                list[i] = list[i + 1];
+                list[i + 1] = t;
+
+                for j in 0..i{
+                    if list[i - j] < list[i - j - 1]{
+                        let t = list[i - j];
+                        list[i - j] = list[i - j - 1];
+                        list[i - j - 1] = t;
+                    }
+                }
+            }
         }
     }
 }
