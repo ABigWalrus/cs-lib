@@ -98,4 +98,12 @@ pub mod sorting{
             }
         }
     }
+
+    pub fn build_max_heap<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
+
+    }
+
+    pub fn heap_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
+    
+    }
 }
