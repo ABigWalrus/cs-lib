@@ -22,10 +22,14 @@ fn main() {
 //     let test_graph: graph::Graph =  graph::Graph::new(&test_vertices, true);
 //     println!("{:?}", test_graph);
 
-    let mut test_graph = graph::DirectedUnweightedGraph::new();
-    test_graph.add_node();
-    test_graph.add_node();
-    test_graph.add_node();
-    test_graph.add_node();
-    test_graph.add_edge(1, 0);
+    // let mut test_graph = graph::DirectedUnweightedGraph::new();
+    // // test_graph.add_node();
+    // // test_graph.add_node();
+    // // test_graph.add_node();
+    // // test_graph.add_node();
+    // test_graph.add_edge(1, 0);
+
+    let mut n1 = graph::Node::new(String::from("a"));
+    println!("{:?}", n1);
+    println!("{:?}", n1);
 }
