@@ -10,7 +10,7 @@ impl Node{ // <'_>
         Node {
             index: 0,
             name: _name,
-            children: Vec::new(),
+            // children: Vec::new(),
         }
     }
 
@@ -18,17 +18,9 @@ impl Node{ // <'_>
     //     self.name
     // }
 
-    pub fn set_index(&mut self, new_index: usize){
-        self.index = new_index;
-    }
-
-    pub fn get_index(&self) -> usize{
-        self.index
-    }
-
-    pub fn add_cild(&mut self, node: Node){
-        self.children.push(node);
-    }
+    // pub fn add_cild(&mut self, node: Node){
+    //     self.children.push(node);
+    // }
 }
 
 #[derive(Debug)]

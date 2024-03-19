@@ -6,7 +6,7 @@ mod graph;
 fn main() {
     // let mut test_list1: [i32; 5] = [4, 3, 1, 4, 5];
     // let mut test_list2: [i32; 5] = [1, 2, 3, 4, 5];
-    let mut test_list3: [i32; 5] = [5, 2, 3, 2, 1];
+    // let mut test_list3: [i32; 5] = [5, 2, 3, 2, 1];
 
     // let mut tes_list_iter = test_list3.iter();
     // let mut previous = tes_list_iter.next();
@@ -34,9 +34,9 @@ fn main() {
 
     // let word = &s;
 
-    s.clear(); // error!
+    // s.clear(); // error!
 
-    println!("the first word is: {}", word);
+    // println!("the first word is: {}", word);
     // swap(list[0], list[1])
 
     // println!("test_list1 {:?}", test_list1);
