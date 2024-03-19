@@ -58,11 +58,28 @@ pub mod sorting{
                     let t = list[i];
                     list[i] = list[i + 1];
                     list[i + 1] = t;
+
                     flag = true;
                 }
             }
         }
     }
+    // pub fn bubble_sort_iter<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
+    //     let mut flag = true;
+    //     while flag{
+    //         flag = false;
+    //         let mut list_iter = list.iter();
+    //         let previous = list_iter.next();
+    //         for i in 0..(list.len() - 1){
+    //             if list[i] > list[i + 1] {
+    //                 let t = list[i];
+    //                 list[i] = list[i + 1];
+    //                 list[i + 1] = t;
+    //                 flag = true;
+    //             }
+    //         }
+    //     }
+    // }
 
     pub fn selection_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
         let mut n = list.len();
