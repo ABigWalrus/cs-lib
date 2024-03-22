@@ -1,15 +1,13 @@
 #[derive(Debug)]
-pub struct Node{ // <'a>
-    index: usize,
+pub struct Node{
     name: String,
-    children: Vec<Node>,
+    // children: Vec<&Node>,
 }
 
 impl Node{ // <'_>
-    pub fn new(_name: String) -> Node { // name: &str, 
+    pub fn new(name: &str) -> Node { // name: &str, 
         Node {
-            index: 0,
-            name: _name,
+            name: String::from(name),
             // children: Vec::new(),
         }
     }
@@ -18,14 +16,22 @@ impl Node{ // <'_>
     //     self.name
     // }
 
-    // pub fn add_cild(&mut self, node: Node){
+    // pub fn add_child(&mut self, node: &Node){
     //     self.children.push(node);
     // }
 }
 
+// fn Graph(name: String, directed: bool, unweighted: bool){
+//     if directed {
+//         return 12;
+//     }else{
+//         return "hdh";
+//     }
+// }
+
 #[derive(Debug)]
 pub struct DirectedUnweightedGraph{
-    vertices: Vec<(Node, usize)>,
+    nodes: Vec<Node>,
     edges: Vec<Vec<usize>>,
     n_vert: usize,
 }
@@ -33,17 +39,17 @@ pub struct DirectedUnweightedGraph{
 impl DirectedUnweightedGraph{
     pub fn new()-> DirectedUnweightedGraph{
         DirectedUnweightedGraph{
-            vertices: Vec::new(),
+            nodes: Vec::new(),
             edges: Vec::new(),
             n_vert: 0
         }
     }
 
-    // pub fn add_node(&mut self){
-    //     self.vertices.push(Node::new(self.n_vert));
-    //     self.edges.push(Vec::new());
-    //     self.n_vert += 1;
-    // }
+    pub fn add_node(&mut self, node: Node){
+        self.nodes.push(node);
+        self.edges.push(Vec::new());
+        self.n_vert += 1;
+    }
 
     pub fn add_edge(&mut self, index1: usize, index2: usize){
         self.edges[index1].push(index2);
