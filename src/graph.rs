@@ -45,13 +45,15 @@ impl DirectedUnweightedGraph{
         }
     }
 
-    pub fn add_node(&mut self, node: Node){
+    pub fn insert_node(&mut self, node: Node){
         self.nodes.push(node);
         self.edges.push(Vec::new());
         self.n_vert += 1;
     }
+    
 
     pub fn add_edge(&mut self, index1: usize, index2: usize){
         self.edges[index1].push(index2);
     }
 }
+    

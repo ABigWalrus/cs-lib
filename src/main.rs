@@ -1,9 +1,26 @@
 mod algo;
 mod graph;
 
+enum Parent{
+    Child1,
+    Child2,
+    Child3,
+}
+
+impl Parent::Child1{
+    fn puk(){
+        println!("puk1");
+    }
+}
 
 
-fn main() {
+impl Parent::Child2{
+    fn puk(){
+        println!("puk2");
+    }
+}
+
+fn main()   {
     let mut test_list1: [i32; 5] = [4, 3, 1, 4, 5];
     let mut test_list2: [i32; 5] = [1, 2, 3, 4, 5];
     let mut test_list3: [i32; 5] = [5, 2, 3, 2, 1];
@@ -16,7 +33,6 @@ fn main() {
     let node5 = graph::Node::new("node5");
 
     let mut graph1 = graph::DirectedUnweightedGraph::new();
-
     graph1.add_node(node0);
     graph1.add_node(node1);
     graph1.add_node(node2);
@@ -31,10 +47,11 @@ fn main() {
     graph1.add_edge(2, 3);
     graph1.add_edge(4, 1);
 
-
-
+    println!("{}", algo::sorting::find_min(&test_list1));
 
     println!("{:?}", graph1);
+
+
     // println!("{:?}", node1);
 
 //     // let mut tes_list_iter = test_list3.iter();
