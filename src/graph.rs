@@ -1,4 +1,5 @@
 #[derive(Debug)]
+#[derive(Clone)]
 pub struct Node{
     name: String,
     // children: Vec<&Node>,
@@ -21,34 +22,40 @@ impl Node{ // <'_>
     // }
 }
 
-// fn Graph(name: String, directed: bool, unweighted: bool){
-//     if directed {
-//         return 12;
-//     }else{
-//         return "hdh";
-//     }
-// }
+pub fn new_directed_unweighted() -> DirectedUnweightedGraph {
+    DirectedUnweightedGraph{
+        nodes: Vec::new(),
+        edges: Vec::new(),
+        n: 0
+    }
+}
 
 #[derive(Debug)]
 pub struct DirectedUnweightedGraph{
     nodes: Vec<Node>,
     edges: Vec<Vec<usize>>,
-    n_vert: usize,
+    n: usize,
 }
 
 impl DirectedUnweightedGraph{
-    pub fn new()-> DirectedUnweightedGraph{
-        DirectedUnweightedGraph{
-            nodes: Vec::new(),
-            edges: Vec::new(),
-            n_vert: 0
-        }
-    }
+    // pub fn new()-> DirectedUnweightedGraph{
+    //     DirectedUnweightedGraph{
+    //         nodes: Vec::new(),
+    //         edges: Vec::new(),
+    //         n_vert: 0
+    //     }
+    // }
 
     pub fn insert_node(&mut self, node: Node){
         self.nodes.push(node);
         self.edges.push(Vec::new());
-        self.n_vert += 1;
+        self.n += 1;
+    }
+    
+    pub fn add_node(&mut self, node: &Node){
+        self.nodes.push((*node).clone());
+        self.edges.push(Vec::new());
+        self.n += 1;
     }
     
 

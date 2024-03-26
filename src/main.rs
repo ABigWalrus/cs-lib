@@ -1,22 +1,37 @@
 mod algo;
 mod graph;
 
-enum Parent{
-    Child1,
-    Child2,
-    Child3,
+// enum Parent{
+//     Child1,
+//     Child2,
+//     Child3,
+// }
+
+// impl Parent::Child1{
+//     fn puk(){
+//         println!("puk1");
+//     }
+// }
+
+
+// impl Parent::Child2{
+//     fn puk(){
+//         println!("puk2");
+//     }
+// }
+
+#[derive(Debug)]
+enum Shape{
+    circle(i32),
+    square(i32, i32)
 }
-
-impl Parent::Child1{
-    fn puk(){
-        println!("puk1");
-    }
-}
-
-
-impl Parent::Child2{
-    fn puk(){
-        println!("puk2");
+impl Shape{
+    fn create_Shape(x: i32) -> Shape{
+        if x > 10 {
+            return Shape::circle(x);
+        } else {
+            return Shape::square(x, 3);
+        }
     }
 }
 
@@ -32,24 +47,25 @@ fn main()   {
     let node4 = graph::Node::new("node4");
     let node5 = graph::Node::new("node5");
 
-    let mut graph1 = graph::DirectedUnweightedGraph::new();
-    graph1.add_node(node0);
-    graph1.add_node(node1);
-    graph1.add_node(node2);
-    graph1.add_node(node3);
-    graph1.add_node(node4);
-    graph1.add_node(node5);
+    let mut graph1 = graph::new_directed_unweighted();
+    graph1.insert_node(node0);
+    graph1.insert_node(node1);
+    graph1.insert_node(node2);
+    graph1.insert_node(node3);
+    graph1.insert_node(node4);
+    graph1.add_node(&node5);
 
     graph1.add_edge(1, 0);
     graph1.add_edge(1, 1);
     graph1.add_edge(1, 2);
-    graph1.add_edge(1, 4);    
     graph1.add_edge(2, 3);
-    graph1.add_edge(4, 1);
-
-    println!("{}", algo::sorting::find_min(&test_list1));
 
     println!("{:?}", graph1);
+    println!("{:?}", node5);
+
+    // let tes1 = Shape::create_Shape(2);
+
+    // println!("{:?}", tes1);
 
 
     // println!("{:?}", node1);
