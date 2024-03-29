@@ -51,13 +51,22 @@ impl DirectedUnweightedGraph{
         self.edges.push(Vec::new());
         self.n += 1;
     }
-    
+
+
+    /// NOT RECOMMENDED
     pub fn add_node(&mut self, node: &Node){
         self.nodes.push((*node).clone());
         self.edges.push(Vec::new());
         self.n += 1;
     }
     
+    // pub fn add_nodes(&mut self, nodes: impl Iterator<Item = &Node>){
+    //     for node in nodes {
+    //         self.nodes.push(node);
+    //         self.edges.push(Vec::new());
+    //         self.n += 1;
+    //     }
+    // }
 
     pub fn add_edge(&mut self, index1: usize, index2: usize){
         self.edges[index1].push(index2);

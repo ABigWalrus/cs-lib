@@ -39,30 +39,38 @@ fn main()   {
     let mut test_list1: [i32; 5] = [4, 3, 1, 4, 5];
     let mut test_list2: [i32; 5] = [1, 2, 3, 4, 5];
     let mut test_list3: [i32; 5] = [5, 2, 3, 2, 1];
+    println!("{test_list1:?}");
+    algo::sorting::build_max_heap(&mut test_list1);
+    println!("{test_list1:?}");
 
-    let node0 = graph::Node::new("node0");
-    let node1 = graph::Node::new("node1");
-    let node2 = graph::Node::new("node2");
-    let node3 = graph::Node::new("node3");
-    let node4 = graph::Node::new("node4");
-    let node5 = graph::Node::new("node5");
+    // let node0 = graph::Node::new("node0");
+    // let node1 = graph::Node::new("node1");
+    // let node2 = graph::Node::new("node2");
+    // let node3 = graph::Node::new("node3");
+    // let node4 = graph::Node::new("node4");
+    // let node5 = graph::Node::new("node5");
 
-    let mut graph1 = graph::new_directed_unweighted();
-    graph1.insert_node(node0);
-    graph1.insert_node(node1);
-    graph1.insert_node(node2);
-    graph1.insert_node(node3);
-    graph1.insert_node(node4);
-    graph1.add_node(&node5);
+    // let nodes0 = [node0, node1, node2, node3, node4, node5, ];
+    // let mut graph1 = graph::new_directed_unweighted();
+    // // graph1.insert_node(node0);
+    // graph1.insert_node(node1);
+    // graph1.insert_node(node2);
+    // graph1.insert_node(node3);
+    // graph1.insert_node(node4);
+    // graph1.add_node(&node5);
+    // graph1.add_nodes(nodes0.iter());
+    // graph1.add_edge(1, 0);
+    // graph1.add_edge(1, 1);
+    // graph1.add_edge(1, 2);
+    // graph1.add_edge(2, 3);
 
-    graph1.add_edge(1, 0);
-    graph1.add_edge(1, 1);
-    graph1.add_edge(1, 2);
-    graph1.add_edge(2, 3);
 
-    println!("{:?}", graph1);
-    println!("{:?}", node5);
 
+
+    // println!("{:?}", graph1);
+    // println!("{:?}", node5);
+    
+    
     // let tes1 = Shape::create_Shape(2);
 
     // println!("{:?}", tes1);

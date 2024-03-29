@@ -117,9 +117,42 @@ pub mod sorting{
     }
 
     pub fn build_max_heap<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
-
+        // for i in 0..list.len() {
+        //     if 2*i < list.len() {
+        //         if list[i] < list[2*i] {
+        //             if 2*i+1 < list.len(){
+        //                 if list[2*i + 1] > list[2 * i] {
+        //                     let t = list[i];
+        //                     list[i] = list[2*i + 1];
+        //                     list[2*i + 1] = t;   
+        //                 } else {
+        //                     let t = list[i];
+        //                     list[i] = list[2* i];
+        //                     list[2*i] = t; 
+        //                 }
+        //             } else {
+        //                 let t = list[i];
+        //                 list[i] = list[2* i];
+        //                 list[2*i] = t; 
+        //             }
+        //         } else {
+        //             if 2*i+1 < list.len(){
+        //                 if list[2*i + 1] > list[i] {
+        //                     let t = list[i];
+        //                     list[i] = list[2*i + 1];
+        //                     list[2*i + 1] = t;   
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        for i in (list.len() - 1)..0 {
+            if list[i] > list[i/2] {
+                lift(list[i]);
+            }
+        }
     }
     pub fn heap_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
-    
+        
     }
 }
