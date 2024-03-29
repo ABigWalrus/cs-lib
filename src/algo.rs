@@ -117,38 +117,23 @@ pub mod sorting{
     }
 
     pub fn build_max_heap<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
-        // for i in 0..list.len() {
-        //     if 2*i < list.len() {
-        //         if list[i] < list[2*i] {
-        //             if 2*i+1 < list.len(){
-        //                 if list[2*i + 1] > list[2 * i] {
-        //                     let t = list[i];
-        //                     list[i] = list[2*i + 1];
-        //                     list[2*i + 1] = t;   
-        //                 } else {
-        //                     let t = list[i];
-        //                     list[i] = list[2* i];
-        //                     list[2*i] = t; 
-        //                 }
-        //             } else {
-        //                 let t = list[i];
-        //                 list[i] = list[2* i];
-        //                 list[2*i] = t; 
-        //             }
-        //         } else {
-        //             if 2*i+1 < list.len(){
-        //                 if list[2*i + 1] > list[i] {
-        //                     let t = list[i];
-        //                     list[i] = list[2*i + 1];
-        //                     list[2*i + 1] = t;   
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-        for i in (list.len() - 1)..0 {
+        for j in 0..list.len() {
+            let i = list.len() - j - 1;
             if list[i] > list[i/2] {
-                lift(list[i]);
+                let root = i/2;
+                let t = list[i];
+                list[i] = list[root];
+                list[root] = t;
+                while root != 0 {
+                    if list[root/2] > list[root] {
+                        break;
+                    } else {
+                        let t = list[root];
+                        list[root] = list[root/2];
+                        list[root/2] = t;
+                        let root = root/2;
+                    }
+                }
             }
         }
     }
