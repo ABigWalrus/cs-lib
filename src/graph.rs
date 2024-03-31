@@ -72,4 +72,24 @@ impl DirectedUnweightedGraph{
         self.edges[index1].push(index2);
     }
 }
-    
+
+#[derive(Debug)]
+pub struct DirectedWeightedGraph{
+    nodes: Vec<Node>,
+    edges: Vec<Vec<usize>>,
+    n: usize,
+}
+
+#[derive(Debug)]
+pub struct UndirectedUnweightedGraph{
+    nodes: Vec<Node>,
+    edges: Vec<Vec<usize>>,
+    n: usize,
+}
+
+#[derive(Debug)]
+pub struct UndirectedWeightedGraph{
+    nodes: Vec<Node>,
+    edges: Vec<Vec<usize>>,
+    n: usize,
+}

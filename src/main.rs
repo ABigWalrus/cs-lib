@@ -40,7 +40,7 @@ fn main()   {
     let mut test_list2: [i32; 5] = [1, 2, 3, 4, 5];
     let mut test_list3: [i32; 5] = [5, 2, 3, 2, 1];
     println!("{test_list1:?}");
-    algo::sorting::build_max_heap(&mut test_list1);
+    algo::sorting::heap_sort(&mut test_list1, 5);
     println!("{test_list1:?}");
 
     // let node0 = graph::Node::new("node0");
