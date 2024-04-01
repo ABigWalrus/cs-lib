@@ -12,14 +12,6 @@ impl Node{ // <'_>
             // children: Vec::new(),
         }
     }
-
-    // pub fn get_name(&self) -> String{
-    //     self.name
-    // }
-
-    // pub fn add_child(&mut self, node: &Node){
-    //     self.children.push(node);
-    // }
 }
 
 pub fn new_directed_unweighted() -> DirectedUnweightedGraph {
