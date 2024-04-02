@@ -155,3 +155,6 @@
 // //     let s1 = graph::Graph(String::from("sjdjsd"), true, false);
 // //     println!("{:?}", s1);
 // // }
+
+pub mod algo;
+pub mod graph;

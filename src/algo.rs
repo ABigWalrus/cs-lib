@@ -40,7 +40,7 @@ pub mod sorting{
         max
     }
 
-    pub fn is_sorted<T: std::cmp::PartialOrd + Copy>(list: &mut [T]) -> bool{
+    pub fn is_sorted<T: std::cmp::PartialOrd>(list: &[T]) -> bool{
         for i in 0..(list.len() - 1){
             if list[i] > list[i + 1]{
                 return false;
@@ -214,15 +214,15 @@ pub mod sorting{
         //     }
         // }
 
-        for j in 0..=(n/2 - 1) {
-            let i = n/2 - 1 - j;
-            build_max_heap(list, n, i);
-        }
+        // for j in 0..=(n/2 - 1) {
+        //     let i = n/2 - 1 - j;
+        //     build_max_heap(list, n, i);
+        // }
 
-        for j in 0..=(n - 1) {
-            let i = n - 1 - j;
-            build_max_heap(list, n, i);
-        }
+        // for j in 0..=(n - 1) {
+        //     let i = n - 1 - j;
+        //     build_max_heap(list, n, i);
+        // }
 
         // let mut i = n - 1;
         // while i >= 0 {
