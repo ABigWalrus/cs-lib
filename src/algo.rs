@@ -61,11 +61,7 @@ pub mod sorting{
             flag = false;
             for i in 0..(list.len() - 1){
                 if list[i] > list[i + 1] {
-                    // let t = list[i];
-                    // list[i] = list[i + 1];
-                    // list[i + 1] = t;
                     swap(list, i, i + 1);
-
                     flag = true;
                 }
             }
@@ -93,30 +89,30 @@ pub mod sorting{
         let mut max;
         for i in 0..(list.len() - 1){
             max = find_max_interval(list, 0, n - i);
-            let t = list[max];
-            list[max] = list[n - i - 1];
-            list[n - i - 1] = t;
+            swap(list, max, n - i - 1)
         }
     }
 
     pub fn insertion_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
         if list[0] > list[1] {
-            let t = list[0];
-            list[0] = list[1];
-            list[1] = t;
+            // let t = list[0];
+            // list[0] = list[1];
+            // list[1] = t;
+            swap(list, 0, 1);
         }
         for i in 1..(list.len() - 1){
             if list[i] > list[i + 1] {
 
-                let t = list[i];
-                list[i] = list[i + 1];
-                list[i + 1] = t;
-
+                // let t = list[i];
+                // list[i] = list[i + 1];
+                // list[i + 1] = t;
+                swap(list, i, i + 1);
                 for j in 0..i{
                     if list[i - j] < list[i - j - 1]{
-                        let t = list[i - j];
-                        list[i - j] = list[i - j - 1];
-                        list[i - j - 1] = t;
+                        // let t = list[i - j];
+                        // list[i - j] = list[i - j - 1];
+                        // list[i - j - 1] = t;
+                        swap(list, i - j, i - j - 1);
                     }
                 }
             }
