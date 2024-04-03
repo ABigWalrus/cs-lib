@@ -1,5 +1,11 @@
 pub mod sorting{
 
+    pub fn swap<T:Copy>(list: &mut [T], index1: usize, index2: usize) {
+        let t = list[index1];
+        list[index1] = list[index2];
+        list[index2] = t;
+    }
+
     pub fn find_min<T: std::cmp::PartialOrd + Copy>(list: &[T]) -> T{
         let mut min = list[0];
         for i in 1..list.len(){
@@ -55,9 +61,10 @@ pub mod sorting{
             flag = false;
             for i in 0..(list.len() - 1){
                 if list[i] > list[i + 1] {
-                    let t = list[i];
-                    list[i] = list[i + 1];
-                    list[i + 1] = t;
+                    // let t = list[i];
+                    // list[i] = list[i + 1];
+                    // list[i + 1] = t;
+                    swap(list, i, i + 1);
 
                     flag = true;
                 }
@@ -117,22 +124,6 @@ pub mod sorting{
     }
 
     pub fn build_max_heap<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
-        // let mut largest = i;
-        // let l = 2 * i + 1;
-        // let r = 2 * i + 2;
-        // if l < n && list[l] > list[largest]{
-        //     largest = l;
-        // }
-        // if r < n && list[r] > list[largest]{
-        //     largest = r;
-        // }
-        // if largest != i {
-        //     let t = list[i];
-        //     list[i] = list[largest];
-        //     list[largest] = t;
-
-        //     build_max_heap(list, n, largest);
-        // }
         for j in 0..(list.len() ) {
             let i = list.len() - j - 1;
             if list[i] > list[i/2] {
@@ -237,4 +228,11 @@ pub mod sorting{
         // }
     }
 
+    // pub fn quick_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
+    //     quick_sort_indexed(list, 0, list.len() - 1);
+    // }
+
+    // fn quick_sort_indexed<T: std::cmp::PartialOrd + Copy>(list: &mut [T], left: usize, right: usize){
+
+    // }
 }
