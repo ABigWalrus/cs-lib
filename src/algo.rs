@@ -224,11 +224,35 @@ pub mod sorting{
         // }
     }
 
-    // pub fn quick_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
-    //     quick_sort_indexed(list, 0, list.len() - 1);
-    // }
+    pub fn quick_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
+        quick_sort_indexed(list, 0, list.len() - 1);
+    }
 
-    // fn quick_sort_indexed<T: std::cmp::PartialOrd + Copy>(list: &mut [T], left: usize, right: usize){
+    fn quick_sort_indexed<T: std::cmp::PartialOrd + Copy>(list: &mut [T], left: usize, right: usize){
+        if left < right {
+            let pivot_pos = divide(list, left, right);
 
-    // }
+            quick_sort_indexed(list, left, pivot_pos - 1);
+            quick_sort_indexed(list, pivot_pos + 1, right);
+        }   
+    }
+
+    fn divide<T: std::cmp::PartialOrd + Copy>(list: &mut [T], left: usize, right: usize) -> usize {
+        let middle = (left + right) / 2;
+        let mut pivot = list[middle].clone();
+
+        let mut pivot_pos = left;
+
+        for i in left..right {
+            if list[i] <= pivot {
+                swap(list, pivot_pos, i);
+                pivot_pos += 1;
+            }
+            pivot = list[middle].clone();
+        }
+
+        swap(list, pivot_pos, right);
+
+        pivot_pos
+    }
 }
