@@ -255,4 +255,46 @@ pub mod sorting{
 
         pivot_pos
     }
+
+    pub fn merge_sort<T: std::cmp::PartialOrd + Copy + std::default::Default>(list: &mut [T]) {
+        merge_sort_indexed(list, 0, list.len() - 1);
+    }
+    fn merge_sort_indexed<T: std::cmp::PartialOrd + Copy + std::default::Default>(list: &mut [T], from: usize, to: usize) {
+        if (to - from) > 0 {
+            let middle: usize = (from + to) / 2;
+
+            merge_sort_indexed(list, from, middle);
+            merge_sort_indexed(list, middle + 1, to);
+
+            merge(list, from, middle, to);
+        }
+    }
+    fn merge<T: std::cmp::PartialOrd + Copy + std::default::Default>(list: &mut [T], left: usize, middle: usize, right: usize) {
+        let n: usize =  middle - left + 1; 
+        let mut tmp_list: Vec<T> = vec![Default::default(); n];
+        for i in 0..n {
+            tmp_list[i] = list[i].clone();
+        }
+        let mut index_left: usize = 0;
+        let mut index_right: usize = middle + 1;
+        let mut index_result: usize = left;
+        
+        while (index_left < n) && (index_right <= right) {
+            if tmp_list[index_left] <= list[index_right] {
+                list[index_result] = tmp_list[index_left].clone();
+                index_left += 1;
+            } else {
+                list[index_result] = tmp_list[index_right].clone();
+                index_right += 1;
+            }
+
+            index_result += 1;
+        }
+
+        while index_left < tmp_list.len() {
+            list[index_result] = tmp_list[index_left];
+            index_result += 1;
+            index_left += 1;
+        }
+    }
 }
