@@ -9,7 +9,6 @@ impl Node{ // <'_>
     pub fn new(name: &str) -> Node { // name: &str, 
         Node {
             name: String::from(name),
-            // children: Vec::new(),
         }
     }
 }
