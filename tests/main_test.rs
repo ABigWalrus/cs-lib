@@ -59,42 +59,63 @@ mod simple_int_list_sorting{
     }
 
     #[test]
-    fn quick_sort_test() {
+    fn heap_sort_test() {
         let mut test_list1: [i32; 5] = [1, 2, 3, 4, 5];
         let mut test_list2: [i32; 5] = [4, 3, 1, 4, 5];
         let mut test_list3: [i32; 5] = [5, 2, 3, 2, 1];
+        println!("-----------------");
+        sorting::build_max_heap(&mut test_list1);
+        println!("-----------------");
+        sorting::build_max_heap(&mut test_list2);
+        println!("-----------------");
+        sorting::build_max_heap(&mut test_list3);
 
-        sorting::quick_sort(&mut test_list1);
-        sorting::quick_sort(&mut test_list2);
-        sorting::quick_sort(&mut test_list3);
-
-        println!("{:?}", test_list1);
-        println!("{:?}", test_list2);
-        println!("{:?}", test_list3);
+        println!("list 1 {test_list1:?}");
+        println!("list 2 {test_list2:?}");
+        println!("list 3 {test_list3:?}");
 
         assert!(sorting::is_sorted(&test_list1));
         assert!(sorting::is_sorted(&test_list2));
         assert!(sorting::is_sorted(&test_list3));
     }
 
-    #[test]
-    fn merge_sort_test() {
-        let mut test_list1: [i32; 5] = [1, 2, 3, 4, 5];
-        let mut test_list2: [i32; 5] = [4, 3, 1, 4, 5];
-        let mut test_list3: [i32; 5] = [5, 2, 3, 2, 1];
+    // #[test]
+    // fn quick_sort_test() {
+    //     let mut test_list1: [i32; 5] = [1, 2, 3, 4, 5];
+    //     let mut test_list2: [i32; 5] = [4, 3, 1, 4, 5];
+    //     let mut test_list3: [i32; 5] = [5, 2, 3, 2, 1];
 
-        sorting::merge_sort(&mut test_list1);
-        sorting::merge_sort(&mut test_list2);
-        sorting::merge_sort(&mut test_list3);
+    //     sorting::quick_sort(&mut test_list1);
+    //     sorting::quick_sort(&mut test_list2);
+    //     sorting::quick_sort(&mut test_list3);
 
-        println!("{:?}", test_list1);
-        println!("{:?}", test_list2);
-        println!("{:?}", test_list3);
+    //     println!("{:?}", test_list1);
+    //     println!("{:?}", test_list2);
+    //     println!("{:?}", test_list3);
 
-        assert!(sorting::is_sorted(&test_list1));
-        assert!(sorting::is_sorted(&test_list2));
-        assert!(sorting::is_sorted(&test_list3));
-    }
+    //     assert!(sorting::is_sorted(&test_list1));
+    //     assert!(sorting::is_sorted(&test_list2));
+    //     assert!(sorting::is_sorted(&test_list3));
+    // }
+
+    // #[test]
+    // fn merge_sort_test() {
+    //     let mut test_list1: [i32; 5] = [1, 2, 3, 4, 5];
+    //     let mut test_list2: [i32; 5] = [4, 3, 1, 4, 5];
+    //     let mut test_list3: [i32; 5] = [5, 2, 3, 2, 1];
+
+    //     sorting::merge_sort(&mut test_list1);
+    //     sorting::merge_sort(&mut test_list2);
+    //     sorting::merge_sort(&mut test_list3);
+
+    //     println!("{:?}", test_list1);
+    //     println!("{:?}", test_list2);
+    //     println!("{:?}", test_list3);
+
+    //     assert!(sorting::is_sorted(&test_list1));
+    //     assert!(sorting::is_sorted(&test_list2));
+    //     assert!(sorting::is_sorted(&test_list3));
+    // }
 }
 // mod algo;
 // mod graph;

@@ -119,25 +119,49 @@ pub mod sorting{
         }
     }
 
-    pub fn build_max_heap<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
-        for j in 0..(list.len() ) {
+    pub fn build_max_heap<T: std::cmp::PartialOrd + Copy + std::fmt::Debug>(list: &mut [T]){
+        for j in 0..list.len(){
+
             let i = list.len() - j - 1;
-            if list[i] > list[i/2] {
-                let root = i/2;
-                let t = list[i];
-                list[i] = list[root];
-                list[root] = t;
-                while root != 0 {
-                    if list[root/2] > list[root] {
-                        break;
-                    } else {
-                        let t = list[root];
-                        list[root] = list[root/2];
-                        list[root/2] = t;
-                        let root = root/2;
-                    }
-                }
+            // if list[i] > list[i/2] {
+            //     let root = i/2;
+            //     let t = list[i];
+            //     list[i] = list[root];
+            //     list[root] = t;
+            //     while root != 0 {
+            //         if list[root/2] > list[root] {
+            //             break;
+            //         } else {
+            //             let t = list[root];
+            //             list[root] = list[root/2];
+            //             list[root/2] = t;
+            //             let root = root/2;
+            //         }
+            //     }
+            // }
+            sink(list, i, list.len());
+        }
+    }
+
+    pub fn sink<T: std::cmp::PartialOrd + Copy + std::fmt::Debug>(list: &mut [T], index: usize, limit: usize){
+        let mut max = index;
+        if 2 * index + 1 < limit {
+            if list[2 * index + 1] > list[max] {
+                max = 2 * index + 1;
             }
+        }
+        if 2 * index + 2 < limit {
+            if list[2 * index + 2] > list[max] {
+                max = 2 * index + 2;
+            }
+        }
+        if max == index {
+            println!("IT RETURNS");
+            return;
+        } else {
+            println!("RECURSIVE index: {:?} with i {index:?} max: {:?} with i {max:?}", list[index], list[max]);
+            swap(list, index, max);
+            sink(list, max, limit);
         }
     }
 
