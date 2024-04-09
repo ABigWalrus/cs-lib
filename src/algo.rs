@@ -100,7 +100,7 @@ pub mod sorting{
         }
     }
 
-    pub fn sink<T: std::cmp::PartialOrd + Copy>(list: &mut [T], index: usize, limit: usize){
+    fn sink<T: std::cmp::PartialOrd + Copy>(list: &mut [T], index: usize, limit: usize){
         let mut max = index;
         if 2 * index + 1 < limit {
             if list[2 * index + 1] > list[max] {
@@ -128,23 +128,24 @@ pub mod sorting{
         }
     }
 
-    pub fn quick_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
+    pub fn quick_sort<T: std::cmp::PartialOrd + Copy + std::fmt::Debug>(list: &mut [T]){
         quick_sort_indexed(list, 0, list.len() - 1);
     }
 
-    fn quick_sort_indexed<T: std::cmp::PartialOrd + Copy>(list: &mut [T], left: usize, right: usize){
-        if left < right {
+    fn quick_sort_indexed<T: std::cmp::PartialOrd + Copy + std::fmt::Debug>(list: &mut [T], left: usize, right: usize){
+        if left < right  {
             let pivot_pos = divide(list, left, right);
-
-            quick_sort_indexed(list, left, pivot_pos - 1);
+            if pivot_pos != 0 {
+                quick_sort_indexed(list, left, pivot_pos - 1);
+            }
             quick_sort_indexed(list, pivot_pos + 1, right);
         }   
     }
 
     fn divide<T: std::cmp::PartialOrd + Copy>(list: &mut [T], left: usize, right: usize) -> usize {
         let middle = (left + right) / 2;
-        let mut pivot = list[middle].clone();
-
+        let pivot = list[middle].clone();
+        swap(list, middle, right);
         let mut pivot_pos = left;
 
         for i in left..right {
@@ -152,7 +153,6 @@ pub mod sorting{
                 swap(list, pivot_pos, i);
                 pivot_pos += 1;
             }
-            pivot = list[middle].clone();
         }
 
         swap(list, pivot_pos, right);
