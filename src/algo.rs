@@ -67,22 +67,6 @@ pub mod sorting{
             }
         }
     }
-    // pub fn bubble_sort_iter<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
-    //     let mut flag = true;
-    //     while flag{
-    //         flag = false;
-    //         let mut list_iter = list.iter();
-    //         let previous = list_iter.next();
-    //         for i in 0..(list.len() - 1){
-    //             if list[i] > list[i + 1] {
-    //                 let t = list[i];
-    //                 list[i] = list[i + 1];
-    //                 list[i + 1] = t;
-    //                 flag = true;
-    //             }
-    //         }
-    //     }
-    // }
 
     pub fn selection_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
         let mut n = list.len();
@@ -95,23 +79,13 @@ pub mod sorting{
 
     pub fn insertion_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
         if list[0] > list[1] {
-            // let t = list[0];
-            // list[0] = list[1];
-            // list[1] = t;
             swap(list, 0, 1);
         }
         for i in 1..(list.len() - 1){
             if list[i] > list[i + 1] {
-
-                // let t = list[i];
-                // list[i] = list[i + 1];
-                // list[i + 1] = t;
                 swap(list, i, i + 1);
                 for j in 0..i{
                     if list[i - j] < list[i - j - 1]{
-                        // let t = list[i - j];
-                        // list[i - j] = list[i - j - 1];
-                        // list[i - j - 1] = t;
                         swap(list, i - j, i - j - 1);
                     }
                 }
@@ -121,24 +95,7 @@ pub mod sorting{
 
     pub fn build_max_heap<T: std::cmp::PartialOrd + Copy + std::fmt::Debug>(list: &mut [T]){
         for j in 0..list.len(){
-
             let i = list.len() - j - 1;
-            // if list[i] > list[i/2] {
-            //     let root = i/2;
-            //     let t = list[i];
-            //     list[i] = list[root];
-            //     list[root] = t;
-            //     while root != 0 {
-            //         if list[root/2] > list[root] {
-            //             break;
-            //         } else {
-            //             let t = list[root];
-            //             list[root] = list[root/2];
-            //             list[root/2] = t;
-            //             let root = root/2;
-            //         }
-            //     }
-            // }
             sink(list, i, list.len());
         }
     }
