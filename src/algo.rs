@@ -93,14 +93,14 @@ pub mod sorting{
         }
     }
 
-    pub fn build_max_heap<T: std::cmp::PartialOrd + Copy + std::fmt::Debug>(list: &mut [T]){
+    pub fn build_max_heap<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
         for j in 0..list.len(){
             let i = list.len() - j - 1;
             sink(list, i, list.len());
         }
     }
 
-    pub fn sink<T: std::cmp::PartialOrd + Copy + std::fmt::Debug>(list: &mut [T], index: usize, limit: usize){
+    pub fn sink<T: std::cmp::PartialOrd + Copy>(list: &mut [T], index: usize, limit: usize){
         let mut max = index;
         if 2 * index + 1 < limit {
             if list[2 * index + 1] > list[max] {
@@ -113,96 +113,19 @@ pub mod sorting{
             }
         }
         if max == index {
-            println!("IT RETURNS");
             return;
         } else {
-            println!("RECURSIVE index: {:?} with i {index:?} max: {:?} with i {max:?}", list[index], list[max]);
             swap(list, index, max);
-            sink(list, max, limit);
+            sink(list, max, limit - 1);
         }
     }
 
     pub fn heap_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
-    //     let sorted = 0;
-    //     build_max_heap(list, 0);
-    //     for i in 0..(list.len() - 1) {
-    //         let t = list[0];
-    //         list[0] = list[list.len() - 1 - sorted];
-    //         list[list.len() - 1 - sorted] = t;
-    //         let sorted = sorted + 1;
-
-    //         // println!("{list:?}");
-
-    //         let mut root = 0;
-    //         while root < list.len() - sorted {
-    //             // for j in 0..10{
-    //             // println!("{} and {}", 2 * root + 2, list.len() - sorted);
-    //             if 2 * root + 2 <= list.len() - sorted {
-    //                 // println!("it went in 1 if {} {} {}", list[root], list[2 * root + 1], list[2 * root + 1]);
-    //                 if list[2 * root + 2] > list[root] {
-    //                     // println!("it went in 2 if");
-
-    //                     if list[2 * root + 1] > list[2 * root + 2]{
-    //                         let t = list[2 * root + 1];
-    //                         list[2 * root + 1] = list[root];
-    //                         list[root] = t;
-
-    //                         root = 2 * root + 1;
-    //                     } else {
-    //                         let t = list[2 * root + 2];
-    //                         list[2 * root + 2] = list[root];
-    //                         list[root] = t;
-
-    //                         root = 2 * root + 2;
-    //                     }
-    //                 } else if list[2 * root + 1] > list[root]{
-    //                     let t = list[2 * root + 1];
-    //                     list[2 * root + 1] = list[root];
-    //                     list[root] = t;
-
-    //                     root = 2 * root + 1;
-    //                 }
-    //             } else if 2 * root + 1 <= list.len() - sorted{
-    //                 if list[2 * root + 1] > list[root]{
-    //                     let t = list[2 * root + 1];
-    //                     list[2 * root + 1] = list[root];
-    //                     list[root] = t;
-
-    //                     root = 2 * root + 1;
-    //                 }
-    //             }
-    //         }
-    //     }
-        // let mut i = n / 2 - 1;
-        // while i >= 0 {
-        //     build_max_heap(list, n, i);
-        //     println!("{i}");
-        //     if i != 0 {
-        //         i = i - 1;
-        //     }
-        // }
-
-        // for j in 0..=(n/2 - 1) {
-        //     let i = n/2 - 1 - j;
-        //     build_max_heap(list, n, i);
-        // }
-
-        // for j in 0..=(n - 1) {
-        //     let i = n - 1 - j;
-        //     build_max_heap(list, n, i);
-        // }
-
-        // let mut i = n - 1;
-        // while i >= 0 {
-        //     let t = list[0];
-        //     list[0] = list[i];
-        //     list[i] = t;
-
-        //     build_max_heap(list, n, 0);
-        //     if i != 0 {
-        //         i = i - 1;
-        //     }
-        // }
+        build_max_heap(list);
+        for i in 0..(list.len() - 1) {
+            swap(list, 0, list.len() - 1 - i);
+            sink(list, 0, list.len() - 1 - i);
+        }
     }
 
     pub fn quick_sort<T: std::cmp::PartialOrd + Copy>(list: &mut [T]){
