@@ -160,10 +160,10 @@ pub mod sorting{
         pivot_pos
     }
 
-    pub fn merge_sort<T: std::cmp::PartialOrd + Copy + std::default::Default>(list: &mut [T]) {
+    pub fn merge_sort<T: std::cmp::PartialOrd + Copy + std::default::Default+ std::fmt::Debug>(list: &mut [T]) {
         merge_sort_indexed(list, 0, list.len() - 1);
     }
-    fn merge_sort_indexed<T: std::cmp::PartialOrd + Copy + std::default::Default>(list: &mut [T], from: usize, to: usize) {
+    fn merge_sort_indexed<T: std::cmp::PartialOrd + Copy + std::default::Default + std::fmt::Debug>(list: &mut [T], from: usize, to: usize) {
         if (to - from) > 0 {
             let middle: usize = (from + to) / 2;
 
@@ -173,12 +173,34 @@ pub mod sorting{
             merge(list, from, middle, to);
         }
     }
-    fn merge<T: std::cmp::PartialOrd + Copy + std::default::Default>(list: &mut [T], left: usize, middle: usize, right: usize) {
+    fn merge<T: std::cmp::PartialOrd + Copy + std::default::Default + std::fmt::Debug>(list: &mut [T], left: usize, middle: usize, right: usize) {
         let n: usize =  middle - left + 1; 
-        let mut tmp_list: Vec<T> = vec![Default::default(); n];
-        for i in 0..n {
-            tmp_list[i] = list[i].clone();
+        let mut tmp_list: Vec<T> = Vec::new();
+        for i in 0..=n {
+            tmp_list.push(list[left + i].clone());
         }
+        // // println!("{left}: {middle}: {right}");
+        // if list[middle] > list[middle + 1] {
+        //     let n = tmp_list.len()/2;
+        //     for i in 0..n {
+        //         let t = tmp_list[i];
+        //         tmp_list[i] = tmp_list[n + i];
+        //         tmp_list[n + i] = t;
+        //     }
+        // }
+        // println!("The temp vec is {:?}", tmp_list);
+        // for i in left..=right {
+        //     match tmp_list.pop() {
+        //         Some(x) => {
+        //             print!("{x:?}: ");
+        //             list[right - i] = x;
+        //         },
+        //         None => {
+        //             println!("Something weird is happening");
+        //         }
+        //     }
+        // }
+        // println!("");
         let mut index_left: usize = 0;
         let mut index_right: usize = middle + 1;
         let mut index_result: usize = left;
@@ -188,7 +210,7 @@ pub mod sorting{
                 list[index_result] = tmp_list[index_left].clone();
                 index_left += 1;
             } else {
-                list[index_result] = tmp_list[index_right].clone();
+                list[index_result] = list[index_right].clone();
                 index_right += 1;
             }
 

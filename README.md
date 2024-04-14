@@ -1,3 +1,3 @@
-# CS Library
+# Just a project to learn rust
 
-CS Library build using rust
+It is a little project a do to learn rust, it contains some cs stuff.
